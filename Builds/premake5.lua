@@ -160,8 +160,6 @@ workspace "trakmeter"
             "StaticRuntime"
         }
 
-        vectorextensions "AVX"
-
         links {
             "kernel32",
             "user32",

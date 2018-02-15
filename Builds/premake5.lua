@@ -157,11 +157,9 @@ workspace "trakmeter"
         systemversion "10.0.16299.0"
 
         flags {
-            "NoMinimalRebuild",
             "StaticRuntime"
         }
 
-        characterset "Unicode"
         vectorextensions "AVX"
 
         links {
@@ -201,20 +199,13 @@ workspace "trakmeter"
 
     filter { "system:linux", "configurations:Debug" }
         warnings "Extra"
-        buildoptions { "-fmessage-length=78" }
-
-    filter { "system:linux", "configurations:Debug" }
-        warnings "Extra"
-        buildoptions { "-fno-inline", "-ggdb" }
+        buildoptions { "-fmessage-length=78", "-fno-inline", "-ggdb" }
 
     filter { "system:linux", "configurations:Debug", "platforms:x32" }
         targetsuffix "_debug"
 
     filter { "system:linux", "configurations:Debug", "platforms:x64" }
         targetsuffix "_debug_x64"
-
-    filter { "system:windows", "configurations:Debug" }
-        symbols "Full"
 
     filter { "system:windows", "configurations:Debug", "platforms:x32" }
         targetsuffix ", Debug)"
@@ -236,10 +227,6 @@ workspace "trakmeter"
 
     filter { "system:linux", "configurations:Release", "platforms:x64" }
         targetsuffix "_x64"
-
-    filter { "system:windows", "configurations:Release" }
-        flags { "NoManifest" }
-        buildoptions { "/Zi" }
 
     filter { "system:windows", "configurations:Release", "platforms:x32" }
         targetsuffix ")"
@@ -282,6 +269,7 @@ workspace "trakmeter"
             }
 
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).exe.pdb"
             targetname "traKmeter (Stereo"
             targetextension (".exe")
 
@@ -338,6 +326,7 @@ workspace "trakmeter"
             }
 
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).exe.pdb"
             targetname "traKmeter (Multi"
             targetextension (".exe")
 
@@ -392,6 +381,7 @@ workspace "trakmeter"
             targetname "trakmeter_stereo_vst"
 
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).dll.pdb"
             targetname "traKmeter (Stereo"
             targetextension (".dll")
 
@@ -434,6 +424,7 @@ workspace "trakmeter"
             targetname "trakmeter_multi_vst"
 
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).dll.pdb"
             targetname "traKmeter (Multi"
             targetextension (".dll")
 
@@ -448,7 +439,7 @@ workspace "trakmeter"
 -- create VST3 projects on Windows only
 if os.target() == "windows" then
 
-   project ("trakmeter_vst3_stereo")
+    project ("trakmeter_vst3_stereo")
         kind "SharedLib"
 
         defines {
@@ -476,6 +467,7 @@ if os.target() == "windows" then
         }
 
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).vst3.pdb"
             targetname "traKmeter (Stereo"
             targetextension (".vst3")
 
@@ -493,7 +485,7 @@ end
 -- create VST3 projects on Windows only
 if os.target() == "windows" then
 
-   project ("trakmeter_vst3_multi")
+    project ("trakmeter_vst3_multi")
         kind "SharedLib"
 
         defines {
@@ -521,6 +513,7 @@ if os.target() == "windows" then
         }
 
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).vst3.pdb"
             targetname "traKmeter (Multi"
             targetextension (".vst3")
 

@@ -86,7 +86,6 @@
     <IntDir>..\..\..\bin\intermediate_windows\vst3_multi_release\x32\</IntDir>
     <TargetName>traKmeter (Multi)</TargetName>
     <TargetExt>.vst3</TargetExt>
-    <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -94,7 +93,6 @@
     <IntDir>..\..\..\bin\intermediate_windows\vst3_multi_release\x64\</IntDir>
     <TargetName>traKmeter (Multi x64)</TargetName>
     <TargetExt>.vst3</TargetExt>
-    <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -102,17 +100,18 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_WINDOWS=1;_USE_MATH_DEFINES=1;WIN32=1;_DEBUG=1;DEBUG=1;JUCE_CHECK_MEMORY_LEAKS=1;TRAKMETER_MULTI=1;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JUCE_ALSA=0;JUCE_JACK=0;JUCE_ASIO=0;JUCE_WASAPI=0;JUCE_DIRECTSOUND=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\JuceLibraryCode;..\..\..\libraries\juce\modules;..\..\..\Source\frut;..\..\..\libraries;..\..\..\libraries\vst\VST3_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\..\..\bin\traKmeter (Multi, Debug).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).vst3.pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -121,17 +120,18 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_WINDOWS=1;_USE_MATH_DEFINES=1;WIN64=1;_DEBUG=1;DEBUG=1;JUCE_CHECK_MEMORY_LEAKS=1;TRAKMETER_MULTI=1;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;JUCE_ALSA=0;JUCE_JACK=0;JUCE_ASIO=0;JUCE_WASAPI=0;JUCE_DIRECTSOUND=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\JuceLibraryCode;..\..\..\libraries\juce\modules;..\..\..\Source\frut;..\..\..\libraries;..\..\..\libraries\vst\VST3_SDK;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\..\..\bin\traKmeter (Multi x64, Debug).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).vst3.pdb</ProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,7 +148,6 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <AdditionalOptions>/Zi %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -173,7 +172,6 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <AdditionalOptions>/Zi %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>

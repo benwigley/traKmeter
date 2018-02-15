@@ -152,11 +152,9 @@ workspace "{{ name.short }}"
         systemversion "{{ windows_sdk }}"
 
         flags {
-            "NoMinimalRebuild",
             "StaticRuntime"
         }
 
-        characterset "Unicode"
         vectorextensions "AVX"
 
         links {
@@ -196,20 +194,13 @@ workspace "{{ name.short }}"
 
     filter { "system:linux", "configurations:Debug" }
         warnings "Extra"
-        buildoptions { "-fmessage-length=78" }
-
-    filter { "system:linux", "configurations:Debug" }
-        warnings "Extra"
-        buildoptions { "-fno-inline", "-ggdb" }
+        buildoptions { "-fmessage-length=78", "-fno-inline", "-ggdb" }
 
     filter { "system:linux", "configurations:Debug", "platforms:x32" }
         targetsuffix "_debug"
 
     filter { "system:linux", "configurations:Debug", "platforms:x64" }
         targetsuffix "_debug_x64"
-
-    filter { "system:windows", "configurations:Debug" }
-        symbols "Full"
 
     filter { "system:windows", "configurations:Debug", "platforms:x32" }
         targetsuffix ", Debug)"
@@ -231,10 +222,6 @@ workspace "{{ name.short }}"
 
     filter { "system:linux", "configurations:Release", "platforms:x64" }
         targetsuffix "_x64"
-
-    filter { "system:windows", "configurations:Release" }
-        flags { "NoManifest" }
-        buildoptions { "/Zi" }
 
     filter { "system:windows", "configurations:Release", "platforms:x32" }
         targetsuffix ")"
@@ -279,6 +266,7 @@ workspace "{{ name.short }}"
             }
 
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).exe.pdb"
             targetname "{{ name.real }} ({{ variant.real }}"
             targetextension (".exe")
 
@@ -335,6 +323,7 @@ workspace "{{ name.short }}"
             targetname "{{ name.short }}_{{ variant.short }}_vst"
 
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).dll.pdb"
             targetname "{{ name.real }} ({{ variant.real }}"
             targetextension (".dll")
 
@@ -379,6 +368,7 @@ if os.target() == "windows" then
         }
 {{ additions }}
         filter { "system:windows" }
+            symbolspath "$(OutDir)$(TargetName).vst3.pdb"
             targetname "{{ name.real }} ({{ variant.real }}"
             targetextension (".vst3")
 

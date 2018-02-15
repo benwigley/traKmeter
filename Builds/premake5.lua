@@ -45,7 +45,6 @@ workspace "trakmeter"
     configurations { "Debug", "Release" }
 
     location (os.target() .. "/" .. _ACTION .. "/")
-    targetdir "../bin/"
     targetprefix ""
 
     files {
@@ -205,6 +204,9 @@ workspace "trakmeter"
     filter { "system:linux", "configurations:Debug", "platforms:x64" }
         targetsuffix "_debug_x64"
 
+    filter { "system:windows", "configurations:Debug" }
+       symbols "Full"
+
     filter { "system:windows", "configurations:Debug", "platforms:x32" }
         targetsuffix ", Debug)"
 
@@ -236,6 +238,7 @@ workspace "trakmeter"
 
     project ("trakmeter_standalone_stereo")
         kind "WindowedApp"
+        targetdir "../bin/standalone/"
 
         defines {
             "TRAKMETER_STEREO=1",
@@ -267,7 +270,6 @@ workspace "trakmeter"
             }
 
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).exe.pdb"
             targetname "traKmeter (Stereo"
             targetextension (".exe")
 
@@ -293,6 +295,7 @@ workspace "trakmeter"
 
     project ("trakmeter_standalone_multi")
         kind "WindowedApp"
+        targetdir "../bin/standalone/"
 
         defines {
             "TRAKMETER_MULTI=1",
@@ -324,7 +327,6 @@ workspace "trakmeter"
             }
 
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).exe.pdb"
             targetname "traKmeter (Multi"
             targetextension (".exe")
 
@@ -350,6 +352,7 @@ workspace "trakmeter"
 
     project ("trakmeter_vst_stereo")
         kind "SharedLib"
+        targetdir "../bin/vst/"
 
         defines {
             "TRAKMETER_STEREO=1",
@@ -379,7 +382,6 @@ workspace "trakmeter"
             targetname "trakmeter_stereo_vst"
 
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).dll.pdb"
             targetname "traKmeter (Stereo"
             targetextension (".dll")
 
@@ -393,6 +395,7 @@ workspace "trakmeter"
 
     project ("trakmeter_vst_multi")
         kind "SharedLib"
+        targetdir "../bin/vst/"
 
         defines {
             "TRAKMETER_MULTI=1",
@@ -422,7 +425,6 @@ workspace "trakmeter"
             targetname "trakmeter_multi_vst"
 
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).dll.pdb"
             targetname "traKmeter (Multi"
             targetextension (".dll")
 
@@ -439,6 +441,7 @@ if os.target() == "windows" then
 
     project ("trakmeter_vst3_stereo")
         kind "SharedLib"
+        targetdir "../bin/vst3/"
 
         defines {
             "TRAKMETER_STEREO=1",
@@ -465,7 +468,6 @@ if os.target() == "windows" then
         }
 
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).vst3.pdb"
             targetname "traKmeter (Stereo"
             targetextension (".vst3")
 
@@ -485,6 +487,7 @@ if os.target() == "windows" then
 
     project ("trakmeter_vst3_multi")
         kind "SharedLib"
+        targetdir "../bin/vst3/"
 
         defines {
             "TRAKMETER_MULTI=1",
@@ -511,7 +514,6 @@ if os.target() == "windows" then
         }
 
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).vst3.pdb"
             targetname "traKmeter (Multi"
             targetextension (".vst3")
 
@@ -531,6 +533,7 @@ if os.target() == "linux" then
 
     project ("trakmeter_lv2_stereo")
         kind "SharedLib"
+        targetdir "../bin/lv2/"
 
         defines {
             "TRAKMETER_STEREO=1",
@@ -571,6 +574,7 @@ if os.target() == "linux" then
 
     project ("trakmeter_lv2_multi")
         kind "SharedLib"
+        targetdir "../bin/lv2/"
 
         defines {
             "TRAKMETER_MULTI=1",

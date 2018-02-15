@@ -40,7 +40,6 @@ workspace "{{ name.short }}"
     configurations { "Debug", "Release" }
 
     location (os.target() .. "/" .. _ACTION .. "/")
-    targetdir "../bin/"
     targetprefix ""
 
     files {
@@ -200,6 +199,9 @@ workspace "{{ name.short }}"
     filter { "system:linux", "configurations:Debug", "platforms:x64" }
         targetsuffix "_debug_x64"
 
+    filter { "system:windows", "configurations:Debug" }
+       symbols "Full"
+
     filter { "system:windows", "configurations:Debug", "platforms:x32" }
         targetsuffix ", Debug)"
 
@@ -233,6 +235,7 @@ workspace "{{ name.short }}"
 {% macro standalone(name, variant, additions) %}
     project ("{{ name.short }}_standalone_{{ variant.short }}")
         kind "WindowedApp"
+        targetdir "../bin/standalone/"
 
         defines {
             "{{ name.short | upper }}_{{ variant.short | upper }}=1",
@@ -264,7 +267,6 @@ workspace "{{ name.short }}"
             }
 
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).exe.pdb"
             targetname "{{ name.real }} ({{ variant.real }}"
             targetextension (".exe")
 
@@ -292,6 +294,7 @@ workspace "{{ name.short }}"
 {% macro vst(name, variant, additions) %}
     project ("{{ name.short }}_vst_{{ variant.short }}")
         kind "SharedLib"
+        targetdir "../bin/vst/"
 
         defines {
             "{{ name.short | upper }}_{{ variant.short | upper }}=1",
@@ -321,7 +324,6 @@ workspace "{{ name.short }}"
             targetname "{{ name.short }}_{{ variant.short }}_vst"
 
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).dll.pdb"
             targetname "{{ name.real }} ({{ variant.real }}"
             targetextension (".dll")
 
@@ -340,6 +342,7 @@ if os.target() == "windows" then
 
     project ("{{ name.short }}_vst3_{{ variant.short }}")
         kind "SharedLib"
+        targetdir "../bin/vst3/"
 
         defines {
             "{{ name.short | upper }}_{{ variant.short | upper }}=1",
@@ -366,7 +369,6 @@ if os.target() == "windows" then
         }
 {{ additions }}
         filter { "system:windows" }
-            symbolspath "$(OutDir)$(TargetName).vst3.pdb"
             targetname "{{ name.real }} ({{ variant.real }}"
             targetextension (".vst3")
 
@@ -388,6 +390,7 @@ if os.target() == "linux" then
 
     project ("{{ name.short }}_lv2_{{ variant.short }}")
         kind "SharedLib"
+        targetdir "../bin/lv2/"
 
         defines {
             "{{ name.short | upper }}_{{ variant.short | upper }}=1",

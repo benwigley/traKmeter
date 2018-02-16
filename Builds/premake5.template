@@ -154,6 +154,8 @@ workspace "{{ name.short }}"
             "StaticRuntime"
         }
 
+        vectorextensions "AVX"
+
         links {
             "kernel32",
             "user32",

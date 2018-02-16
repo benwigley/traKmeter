@@ -26,7 +26,7 @@
 #pragma once
 
 
-/// Simple class for version info and common functions.
+/// Simple class for common math functions.
 ///
 class SimpleMath
 {

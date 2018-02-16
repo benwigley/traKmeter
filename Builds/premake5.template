@@ -284,10 +284,10 @@ workspace "{{ name.short }}"
             }
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/standalone_{{ variant.short }}_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/standalone_{{ variant.short }}_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/standalone_{{ variant.short }}_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/standalone_{{ variant.short }}_release")
 {% endmacro %}
 
 
@@ -329,10 +329,10 @@ workspace "{{ name.short }}"
             targetextension (".dll")
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst_{{ variant.short }}_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst_{{ variant.short }}_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst_{{ variant.short }}_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst_{{ variant.short }}_release")
 {% endmacro %}
 
 
@@ -374,10 +374,10 @@ if os.target() == "windows" then
             targetextension (".vst3")
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst3_{{ variant.short }}_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst3_{{ variant.short }}_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst3_{{ variant.short }}_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst3_{{ variant.short }}_release")
 
 -- create VST3 projects on Windows only
 end
@@ -417,10 +417,10 @@ if os.target() == "linux" then
             targetname "{{ name.short }}_{{ variant.short }}_lv2"
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/lv2_{{ variant.short }}_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/lv2_{{ variant.short }}_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/lv2_{{ variant.short }}_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/lv2_{{ variant.short }}_release")
 
 -- create LV2 projects on Linux only
 end

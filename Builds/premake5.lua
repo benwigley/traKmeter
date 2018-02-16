@@ -287,10 +287,10 @@ workspace "trakmeter"
             }
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/standalone_stereo_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/standalone_stereo_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/standalone_stereo_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/standalone_stereo_release")
 
 --------------------------------------------------------------------------------
 
@@ -344,10 +344,10 @@ workspace "trakmeter"
             }
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/standalone_multi_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/standalone_multi_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/standalone_multi_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/standalone_multi_release")
 
 --------------------------------------------------------------------------------
 
@@ -387,10 +387,10 @@ workspace "trakmeter"
             targetextension (".dll")
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst_stereo_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst_stereo_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst_stereo_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst_stereo_release")
 
 --------------------------------------------------------------------------------
 
@@ -430,10 +430,10 @@ workspace "trakmeter"
             targetextension (".dll")
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst_multi_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst_multi_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst_multi_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst_multi_release")
 
 --------------------------------------------------------------------------------
 
@@ -473,10 +473,10 @@ if os.target() == "windows" then
             targetextension (".vst3")
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst3_stereo_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst3_stereo_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst3_stereo_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst3_stereo_release")
 
 -- create VST3 projects on Windows only
 end
@@ -519,10 +519,10 @@ if os.target() == "windows" then
             targetextension (".vst3")
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst3_multi_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst3_multi_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/vst3_multi_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/vst3_multi_release")
 
 -- create VST3 projects on Windows only
 end
@@ -560,10 +560,10 @@ if os.target() == "linux" then
             targetname "trakmeter_stereo_lv2"
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/lv2_stereo_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/lv2_stereo_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/lv2_stereo_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/lv2_stereo_release")
 
 -- create LV2 projects on Linux only
 end
@@ -601,10 +601,10 @@ if os.target() == "linux" then
             targetname "trakmeter_multi_lv2"
 
         filter { "configurations:Debug" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/lv2_multi_debug")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/lv2_multi_debug")
 
         filter { "configurations:Release" }
-            objdir ("../bin/intermediate_" .. os.target() .. "/lv2_multi_release")
+            objdir ("../bin/.intermediate_" .. os.target() .. "/lv2_multi_release")
 
 -- create LV2 projects on Linux only
 end

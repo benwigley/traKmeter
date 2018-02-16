@@ -192,6 +192,7 @@ workspace "trakmeter"
 
     filter { "configurations:Debug" }
         defines { "_DEBUG=1", "DEBUG=1", "JUCE_CHECK_MEMORY_LEAKS=1" }
+        optimize "Off"
         symbols "On"
 
     filter { "system:linux", "configurations:Debug" }
